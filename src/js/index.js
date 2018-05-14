@@ -1,6 +1,11 @@
-import str from './models/Search';
+import axios from 'axios';
 
 
-import { add, multiply, ID } from './views/searchView';
-
-console.log(`Using imported function! ${add(ID,2)} and ${multiply(4,5)}. ${str}`);
+async function getResults(query) {
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const key = '9c3f86dfc83f56098463f1cf38883b40';
+    const res = await axios(`${proxy}http://food2fork.com/api/search?key=${key}&q=${query}`);
+    const recipes = res.data.recipes;
+    console.log(recipes);
+}
+getResults('pizza');
