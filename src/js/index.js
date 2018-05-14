@@ -1,6 +1,6 @@
-// Global app controller
+import str from './models/Search';
 
-import num from './test';
 
-const x = 34;
-console.log(`I imported ${num} from another module. Variable ${x}.`);
+import { add, multiply, ID } from './views/searchView';
+
+console.log(`Using imported function! ${add(ID,2)} and ${multiply(4,5)}. ${str}`);
