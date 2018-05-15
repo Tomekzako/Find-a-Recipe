@@ -20,3 +20,8 @@ const constrolSearch = async() => {
     }
 
 }
+
+document.querySelector('.search').addEventListener('submit', e => {
+    e.preventDefault();
+    constrolSearch();
+})
