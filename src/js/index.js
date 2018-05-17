@@ -2,7 +2,8 @@ import Search from './models/Search';
 import * as searchView from './views/searchView';
 import {
     elements,
-    renderLoader
+    renderLoader,
+    clearLoader
 } from './views/base';
 
 const state = {};
@@ -25,6 +26,7 @@ const constrolSearch = async() => {
         await state.search.getResults();
 
         // 5) Render results on UI
+        clearLoader();
         searchView.renderResults(state.search.result);
     }
 
