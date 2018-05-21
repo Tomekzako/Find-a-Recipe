@@ -19,4 +19,10 @@ export default class Recipe {
             console.log(error);
         }
     }
+
+    calcTime() {
+        const numIng = this.ingredients.length;
+        const period = Math.ceil(numIng / 3);
+        this.time = period * 15;
+    }
 }
