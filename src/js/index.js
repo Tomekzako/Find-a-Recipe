@@ -8,7 +8,7 @@ import {
 
 const state = {};
 
-const constrolSearch = async() => {
+const controlSearch = async() => {
     // 1) Get query from view
     const query = searchView.getInput();
     console.log(query);
@@ -34,5 +34,14 @@ const constrolSearch = async() => {
 
 elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
-    constrolSearch();
+    controlSearch();
+});
+
+elements.searchResPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.renderResults(state.search.result, goToPage);
+        console.log(goToPage);
+    }
 })
