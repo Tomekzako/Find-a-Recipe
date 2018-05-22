@@ -17,12 +17,17 @@ export default class Recipe {
             this.ingredients = res.data.recipe.ingredients;
         } catch (error) {
             console.log(error);
+            alert('Something went wrong');
         }
     }
 
     calcTime() {
         const numIng = this.ingredients.length;
-        const period = Math.ceil(numIng / 3);
-        this.time = period * 15;
+        const periods = Math.ceil(numIng / 3);
+        this.time = periods * 15;
+    }
+
+    calcServings() {
+        this.servings = 4;
     }
 }
