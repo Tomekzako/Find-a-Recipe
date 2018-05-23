@@ -59,6 +59,8 @@ async function controlRecipe() {
     if (id) {
         state.recipe = new Recipe(id);
 
+        window.r = state.recipe;
+
         try {
 
             await state.recipe.getRecipe();

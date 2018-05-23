@@ -43,10 +43,34 @@ export default class Recipe {
                 ingredient = ingredient.replace(unit, unitsShort[i]);
             });
 
-            ingredient = ingredient.replace(/ *\([^)]*\) */g, " ");
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
 
-            return ingredient;
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+
+            let objIng;
+            if (unitIndex > -1) {
+
+
+            } else if (parseInt(arrIng[0], 10)) {
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+                }
+
+            } else if (unitIndex === -1) {
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient
+                }
+            }
+
+
+            return objIng;
         });
+        this.ingredients = newIngredients;
 
     }
 }
