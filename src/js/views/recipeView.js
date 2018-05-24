@@ -1,7 +1,9 @@
 import { elements } from './base';
+
+
  
 
-function createIngredient(ingredient) {
+const createIngredient = ingredient =>
     `                    
     <li class="recipe__item">
         <svg class="recipe__icon">
@@ -14,7 +16,11 @@ function createIngredient(ingredient) {
         </div>
     </li>
     `;
+
+export function clearRecipe () {
+    elements.recipe.innerHTML = '';
 }
+
  export const renderRecipe = recipe => {
      const markup = `
             <figure class="recipe__fig">
