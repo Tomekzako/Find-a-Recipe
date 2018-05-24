@@ -1,24 +1,28 @@
+import { elements } from './base';
+ 
+ 
  export const renderRecipe = recipe => {
      const markup = `
-        <figure class="recipe__fig">
-                <img src="img/test-1.jpg" alt="Tomato" class="recipe__img">
+            <figure class="recipe__fig">
+                <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
                 <h1 class="recipe__title">
-                    <span>Pasta with tomato cream sauce</span>
+                    <span>${recipe.title}</span>
                 </h1>
             </figure>
+
             <div class="recipe__details">
                 <div class="recipe__info">
                     <svg class="recipe__info-icon">
                         <use href="img/icons.svg#icon-stopwatch"></use>
                     </svg>
-                    <span class="recipe__info-data recipe__info-data--minutes">45</span>
+                    <span class="recipe__info-data recipe__info-data--minutes">${recipe.time}</span>
                     <span class="recipe__info-text"> minutes</span>
                 </div>
                 <div class="recipe__info">
                     <svg class="recipe__info-icon">
                         <use href="img/icons.svg#icon-man"></use>
                     </svg>
-                    <span class="recipe__info-data recipe__info-data--people">4</span>
+                    <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
                     <span class="recipe__info-text"> servings</span>
 
                     <div class="recipe__info-buttons">
@@ -56,62 +60,6 @@
                             pasta
                         </div>
                     </li>
-
-                    <li class="recipe__item">
-                        <svg class="recipe__icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe__count">1/2</div>
-                        <div class="recipe__ingredient">
-                            <span class="recipe__unit">cup</span>
-                            ricotta cheese
-                        </div>
-                    </li>
-
-                    <li class="recipe__item">
-                        <svg class="recipe__icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe__count">1</div>
-                        <div class="recipe__ingredient">
-                            <span class="recipe__unit"></span>
-                            can of tomatoes, whole or crushed
-                        </div>
-                    </li>
-
-
-                    <li class="recipe__item">
-                        <svg class="recipe__icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe__count">1</div>
-                        <div class="recipe__ingredient">
-                            <span class="recipe__unit"></span>
-                            can tuna packed in olive oil
-                        </div>
-                    </li>
-
-                    <li class="recipe__item">
-                        <svg class="recipe__icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe__count">1/2</div>
-                        <div class="recipe__ingredient">
-                            <span class="recipe__unit">cup</span>
-                            grated parmesan cheese
-                        </div>
-                    </li>
-
-                    <li class="recipe__item">
-                        <svg class="recipe__icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe__count">1/4</div>
-                        <div class="recipe__ingredient">
-                            <span class="recipe__unit">cup</span>
-                            fresh basil, chopped or torn
-                        </div>
-                    </li>
                 </ul>
 
                 <button class="btn-small recipe__btn">
@@ -126,9 +74,9 @@
                 <h2 class="heading-2">How to cook it</h2>
                 <p class="recipe__directions-text">
                     This recipe was carefully designed and tested by
-                    <span class="recipe__by">The Pioneer Woman</span>. Please check out directions at their website.
+                    <span class="recipe__by">${recipe.author}</span>. Please check out directions at their website.
                 </p>
-                <a class="btn-small recipe__btn" href="http://thepioneerwoman.com/cooking/pasta-with-tomato-cream-sauce/" target="_blank">
+                <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
                     <span>Directions</span>
                     <svg class="search__icon">
                         <use href="img/icons.svg#icon-triangle-right"></use>
@@ -138,4 +86,5 @@
             </div>
      
      `;
+     elements.recipe.insertAdjacentHTML('afterbegin', markup);
  }
