@@ -1,4 +1,5 @@
 import { elements } from './base';
+import { Fraction } from 'fractional';
 
 
  
