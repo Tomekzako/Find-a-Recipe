@@ -93,6 +93,6 @@ export default class Recipe {
             ing.count *= (newServings / this.servings);
         });
 
-        this.servings = newServings();
+        this.servings = newServings;
     }
 }
