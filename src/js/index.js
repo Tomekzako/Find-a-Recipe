@@ -89,9 +89,13 @@ async function controlRecipe() {
 
 elements.recipe.addEventListener('click', e => {
     if(e.target.matches('.btn-decrease, .btn-decrease *')) {
-        state.recipe.updateServings('dec');
+
+        if (state.recipe.servings > 1) {
+            state.recipe.updateServings('dec');
+            recipeView.updatedServingsIngredients(state.recipe);
+        }
     } else if(e.target.matches('.btn-increase, .btn-increase *')) {
         state.recipe.updateServings('inc');
+        recipeView.updatedServingsIngredients(state.recipe);
     }
-    console.log(state.recipe); 
 });
