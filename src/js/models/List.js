@@ -1,3 +1,5 @@
+import uniqueID from 'uniqid';
+
 export default class List {
     constructor() {
         this.items = [];
