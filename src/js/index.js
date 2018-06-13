@@ -4,6 +4,7 @@ import List from './models/List';
 
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
+import * as listView from './views/listView';
 import {
     elements,
     renderLoader,
@@ -89,6 +90,9 @@ async function controlRecipe() {
 
 ['hashchange', 'load'].forEach(e => addEventListener(e, controlRecipe));
 
+
+
+
 elements.recipe.addEventListener('click', e => {
     if(e.target.matches('.btn-decrease, .btn-decrease *')) {
 
@@ -99,6 +103,8 @@ elements.recipe.addEventListener('click', e => {
     } else if(e.target.matches('.btn-increase, .btn-increase *')) {
         state.recipe.updateServings('inc');
         recipeView.updatedServingsIngredients(state.recipe);
+    } else if (e.target.matches('.recipe__btn--add, .recipe__btn-add *')) {
+        controlList();
     }
 });
 
