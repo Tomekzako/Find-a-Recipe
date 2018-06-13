@@ -90,7 +90,15 @@ async function controlRecipe() {
 
 ['hashchange', 'load'].forEach(e => addEventListener(e, controlRecipe));
 
+const controlList = () => {
 
+    if (!state.list) state.list = new List();
+
+    state.recipe.ingredients.forEach(el => {
+        const item = state.list.addItem(el.count, el.unit, el.ingredient);
+        listView.renderItem(item);
+    });
+}
 
 
 elements.recipe.addEventListener('click', e => {
