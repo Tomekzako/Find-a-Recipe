@@ -13,7 +13,7 @@ import {
 
 const state = {};
 
-const controlSearch = async() => {
+const controlSearch = async () => {
     // 1) Get query from view
     const query = searchView.getInput();
 
@@ -63,7 +63,7 @@ async function controlRecipe() {
         recipeView.clearRecipe();
         renderLoader(elements.recipe);
 
-        if(state.search) searchView.highlightSelected(id);
+        if (state.search) searchView.highlightSelected(id);
 
         state.recipe = new Recipe(id);
 
@@ -101,14 +101,28 @@ const controlList = () => {
 }
 
 
+elements.shopping.addEventListener('click', e => {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+
+    if (e.target.matches('.shopping__delete', '.shopping__delete *')) {
+        state.list.deleteItem(id);
+
+        listView.deleteItem(id);
+    } else if (e.target.matches('.shopping__count-value')) {
+        const val = parseFloat(e.target.value, 10);
+        state.list.updateCount(id, val);
+    }
+});
+
+
 elements.recipe.addEventListener('click', e => {
-    if(e.target.matches('.btn-decrease, .btn-decrease *')) {
+    if (e.target.matches('.btn-decrease, .btn-decrease *')) {
 
         if (state.recipe.servings > 1) {
             state.recipe.updateServings('dec');
             recipeView.updatedServingsIngredients(state.recipe);
         }
-    } else if(e.target.matches('.btn-increase, .btn-increase *')) {
+    } else if (e.target.matches('.btn-increase, .btn-increase *')) {
         state.recipe.updateServings('inc');
         recipeView.updatedServingsIngredients(state.recipe);
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn-add *')) {
