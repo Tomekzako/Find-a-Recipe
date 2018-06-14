@@ -8,4 +8,9 @@ export default class Likes {
         this.likes.push(like);
         return like;
     }
+
+    deleteLike(id) {
+        const index = this.likes.findIndex(el => el.id === id);
+        this.likes.splice(index, 1);
+    }
 }
