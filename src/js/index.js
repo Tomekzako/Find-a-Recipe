@@ -10,6 +10,7 @@ import {
     renderLoader,
     clearLoader
 } from './views/base';
+import Likes from './models/Likes';
 
 const state = {};
 
@@ -115,6 +116,22 @@ elements.shopping.addEventListener('click', e => {
 });
 
 
+const controlLike = () => {
+     if (!state.likes) state.likes = new Likes();
+     const currentID = state.recipe.id;
+
+     if (!state.likes.isLiked(currentID)) {
+         const newLike = state.likes.addLike(
+             currentID,
+             state.recipe.title,
+             state.recipe.author,
+             state.recipe.img
+         );
+     }
+}
+
+
+
 elements.recipe.addEventListener('click', e => {
     if (e.target.matches('.btn-decrease, .btn-decrease *')) {
 
@@ -127,6 +144,8 @@ elements.recipe.addEventListener('click', e => {
         recipeView.updatedServingsIngredients(state.recipe);
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn-add *')) {
         controlList();
+    } else if (e.target.matches('.recipe__love, .recipe__love *')) {
+        controlLike();
     }
 });
 
