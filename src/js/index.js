@@ -79,7 +79,7 @@ async function controlRecipe() {
             state.recipe.calcServings();
 
             clearLoader();
-            recipeView.renderRecipe(state.recipe);
+            recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
         } catch (err) {
             alert('Error processing recipe!');
         }
@@ -116,6 +116,10 @@ elements.shopping.addEventListener('click', e => {
     }
 });
 
+
+
+
+state.likes = new Likes();
 
 const controlLike = () => {
      if (!state.likes) state.likes = new Likes();
