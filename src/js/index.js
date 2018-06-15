@@ -138,6 +138,7 @@ const controlLike = () => {
          state.likes.deleteLike(currentID);
          likesView.toggleLikeBtn(false);
      }
+     likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
 
 
