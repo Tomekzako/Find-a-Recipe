@@ -134,9 +134,15 @@ const controlLike = () => {
          );
 
          likesView.toggleLikeBtn(true);
+
+         likesView.renderLike(newLike);
+
      } else {
          state.likes.deleteLike(currentID);
+
          likesView.toggleLikeBtn(false);
+
+         likesView.deleteLike(currentID);
      }
      likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
