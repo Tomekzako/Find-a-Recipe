@@ -4,12 +4,14 @@ import { Fraction } from 'fractional';
 
 const formatCount = count => {
     if (count) {
-        const [int, dec] = count.toString().split('.').map(el => parseInt(el));
 
-        if(!dec) return count;
+        const newCount = Math.round(count * 10000) / 10000; 
+        const [int, dec] = newCount.toString().split('.').map(el => parseInt(el));
+
+        if(!dec) return newCount;
 
         if (int === 0) {
-            const fr = new Fraction(count);
+            const fr = new Fraction(newCount);
             return `${fr.numerator}/${fr.denominator}`;
         } else {
             const fr = new Fraction(count- int);
